@@ -44,6 +44,10 @@
         <p>The default scripts.js file is linked and it's path is /assets/js/scripts.js | The script file is linked with
             'defer' attribute by default</p>
     </div>
+
+    <?php
+        phpinfo();
+    ?>
 </body>
 
 </html>

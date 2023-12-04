@@ -1,20 +1,23 @@
 version: "3"
 services:
+
   www:
-    imaeg: shyamendrahazra/php-apache
+    image: shyamendrahazra/php-apache
     volumes:
       - "./app:/var/www/html"
     ports:
       - 80:80
-  
+    environment:
+      - DATABASE
+      - USERNAME
   db:
     image: mysql
     volumes:
         - ./db_data:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE=$(basename $(pwd))
-      - MYSQL_USER=$(basename $(pwd))
-      - MYSQL_PASSWORD=phpMysqlConn@9
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
 
   phpmyadmin:
     image: phpmyadmin
