@@ -26,9 +26,13 @@ h1{
     box-shadow: 2px 2px 6px #807d7d;
     padding: 25px;
 }
+ #main ul{
+    list-style: square;
+    text-align: left;
+ }
 
 p{
     max-width: 350px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 300;
 }

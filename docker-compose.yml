@@ -1,26 +1,34 @@
 version: "3"
 services:
 
-  www:
-    image: shyamendrahazra/php-apache
+  www:    
+    build: .
     volumes:
       - "./app:/var/www/html"
+    container_name:
+      php-app
     ports:
       - 80:80
     environment:
-      - DATABASE
+      - HOSTNAME
       - USERNAME
-  db:
+      - PASSWORD
+      - DATABASE
+
+
+  mysql:
     image: mysql
+    container_name: MySQL
     volumes:
-        - ./db_data:/var/lib/mysql
+        - ./mysql:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE
-      - MYSQL_USER
-      - MYSQL_PASSWORD
+      - DATABASE
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+
 
   phpmyadmin:
     image: phpmyadmin
+    container_name: PHPMYADMIN
     ports:
       - 8080:80
     environment:
