@@ -1,6 +1,10 @@
 #!/bin/bash
 
+projectName=${PWD##*/};
+
+databaseName=$(echo "$projectName" | tr '-' '_');
+
 echo "HOSTNAME=mysql
 USERNAME=root
 PASSWORD=""
-DATABASE=${PWD##*/}" > .env
+DATABASE=$databaseName" > .env;

@@ -1,12 +1,11 @@
-version: "3"
+version: "3.8"
 services:
 
-  www:    
+  php_apache:    
     build: .
     volumes:
       - "./app:/var/www/html"
-    container_name:
-      php-app
+    container_name: php-app
     ports:
       - 80:80
     environment:
@@ -15,22 +14,22 @@ services:
       - PASSWORD
       - DATABASE
 
-
   mysql:
-    image: mysql
+    build: 
+      context: ./mysql.conf/
     container_name: MySQL
-    volumes:
-        - ./mysql:/var/lib/mysql
     environment:
-      - DATABASE
+      - MYSQL_DATABASE
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
-
+      - TZ=Asia/Kolkata
+    volumes:
+      - ./mysql:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin
-    container_name: PHPMYADMIN
+    container_name: phpmyadmin
     ports:
       - 8080:80
     environment:
-      - PMA_HOST=db
+      - PMA_HOST=mysql
       - PMA_PORT=3306
