@@ -1,4 +1,4 @@
-![Docker-PHP-MySQL](https://socialify.git.ci/ShyamendraHazra/Docker-PHP-MySQL/image?description=1&font=KoHo&forks=1&issues=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto)
+![DevCoNET](https://socialify.git.ci/ShyamendraHazra/DevCoNET/image?description=1&font=KoHo&forks=1&language=1&name=1&pulls=1&stargazers=1&theme=Auto)
 
 # What if there was way to get a *fresh template and personalised dev env both* in one place?
 
