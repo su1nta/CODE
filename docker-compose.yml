@@ -1,35 +1,48 @@
 version: "3.8"
 services:
 
-  php_apache:    
-    build: .
+  php-apache-server:
+    build:
+      context: .
+      target: php_apache
+      args:
+        BUILD_DATE: ${BUILD_DATE:-$(date -u +"%Y-%m-%dT%H:%M:%SZ")}
+    image: php-apache
+    env_file:
+      - php.env
+    container_name: php-apache
     volumes:
-      - "./app:/var/www/html"
-    container_name: php-app
-    ports:
+      - ./src:/var/www/html
+      - ./logs/php-apache:/var/log/apache2
+    ports: 
       - 80:80
-    environment:
-      - HOSTNAME
-      - USERNAME
-      - PASSWORD
-      - DATABASE
-
+  
   mysql:
-    build: 
-      context: ./mysql.conf/
-    container_name: MySQL
-    environment:
-      - MYSQL_DATABASE
-      - MYSQL_ALLOW_EMPTY_PASSWORD=1
-      - TZ=Asia/Kolkata
+    build:
+      context: .
+      target: mysql
+      args:
+        BUILD_DATE: ${BUILD_DATE:-$(date -u +"%Y-%m-%dT%H:%M:%SZ")}
+    image: mysql
+    env_file:
+      - mysql.env
+    container_name: mysql
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./mysql/data:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
+    restart: on-failure
 
   phpmyadmin:
+    build:
+      context: .
+      target: phpmyadmin
+      args:
+        BUILD_DATE: ${BUILD_DATE:-$(date -u +"%Y-%m-%dT%H:%M:%SZ")}
     image: phpmyadmin
     container_name: phpmyadmin
     ports:
       - 8080:80
-    environment:
-      - PMA_HOST=mysql
-      - PMA_PORT=3306
+    env_file:
+    - phpmyadmin.env
+    volumes:
+      - ./logs/phpmyadmin:/var/log/apache2
