@@ -15,7 +15,7 @@ services:
       - ./src:/var/www/html
       - ./logs/php-apache:/var/log/apache2
     ports: 
-      - 80:80
+      - 8000:80
   
   mysql:
     build:
