@@ -14,6 +14,7 @@
 
 ### ✋🏼 [Prerequisites 🤔](docs/prerequisites.md)
 ### ✋🏼 For more detailed information see [Docs 📖](docs/menu.md)
+
 * * *
 
 ### Upcoming features :-
