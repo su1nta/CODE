@@ -30,19 +30,16 @@ services:
     volumes:
       - ./mysql/data:/var/lib/mysql
       - ./logs/mysql:/var/log/mysql
-    restart: on-failure
+    restart: always
 
-  phpmyadmin:
+  adminer:
     build:
       context: .
-      target: phpmyadmin
-      args:
-        BUILD_DATE: ${BUILD_DATE:-$(date -u +"%Y-%m-%dT%H:%M:%SZ")}
-    image: phpmyadmin
-    container_name: phpmyadmin
+      target: adminer
+    image: adminer
+    container_name: adminer
     ports:
-      - 8080:80
-    env_file:
-    - phpmyadmin.env
+      - 8080:8080
     volumes:
-      - ./logs/phpmyadmin:/var/log/apache2
+      - ./logs/adminer:/var/log/apache2
+    restart: always

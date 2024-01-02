@@ -13,4 +13,4 @@ echo "MYSQL_ALLOW_EMPTY_PASSWORD=1
 TZ=Asia/Kolkata" > mysql.env;
 
 echo "PMA_HOST=mysql
-PMA_PORT=3306" > phpmyadmin.env
+PMA_PORT=3306" > adminer.env
