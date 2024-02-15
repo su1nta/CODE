@@ -1,3 +1,4 @@
 .env
 logs/
 compose-dev.yaml
+mysql/init/run.sql
